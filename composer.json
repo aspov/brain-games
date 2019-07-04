@@ -1,0 +1,12 @@
+{
+    "name": "aspov/brain-games",
+    "bin": ["bin/brain-games"],
+    "description": "project #1",
+    "authors": [
+        {
+            "name": "Alex Aspov",
+            "email": "asp73rus@mail.ru"
+        }
+    ],    
+    "require": {}
+}
