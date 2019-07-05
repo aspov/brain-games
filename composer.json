@@ -2,6 +2,11 @@
     "name": "aspov/brain-games",
     "bin": ["bin/brain-games"],
     "description": "project #1",
+    "autoload": {
+        "files": [
+            "src/cli.php"
+        ]
+    },
     "authors": [
         {
             "name": "Alex Aspov",
@@ -9,5 +14,7 @@
         }
     ],
     "minimum-stability": "dev",    
-    "require": {}
+    "require": {
+        "wp-cli/php-cli-tools": "dev-master"
+    }
 }
