@@ -13,8 +13,14 @@
             "email": "asp73rus@mail.ru"
         }
     ],
+    "scripts": {
+        "phpcs":  "phpcs"
+    },
     "minimum-stability": "dev",    
     "require": {
         "wp-cli/php-cli-tools": "dev-master"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.0@dev"
     }
 }
