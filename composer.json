@@ -1,7 +1,8 @@
 {
     "name": "aspov/brain-games",
     "bin": ["bin/brain-games",
-	    "bin/brain-even"
+	    "bin/brain-even",
+	    "bin/brain-calc"
 	],
     "description": "project #1",
     "autoload": {

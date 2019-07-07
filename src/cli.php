@@ -24,8 +24,8 @@ function run($game = '')
         return null;
     }
     
-    $answerCount = 3;
-    while ($answerCount > 0) {
+    $rounds = 3;
+    for ($i = 0; $i < $rounds; $i++) {
         [$question, $result] = gameStart($game);
         line("Question: {$question}");
         $answer = strtolower(\cli\prompt('Your answer'));
@@ -34,7 +34,6 @@ function run($game = '')
             return line("Let's try again, {$name}!");
         }
         line('Correct!');
-        $answerCount -= 1;
     }
     line("Congratulations, {$name}!");
 }
