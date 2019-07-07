@@ -12,13 +12,12 @@ function gameStart($game, $name)
             line("Question: {$num}");
             $result = $num % 2 == 0 ? 'yes' : 'no';
             $answer = strtolower(\cli\prompt('Your answer'));
-            if ($answer == $result) {
-                line('Correct!');
-                $endGame += 1;
-            } else {
+            if ($answer != $result) {        
                 line("'{$answer}' is wrong answer ;(. Correct answer was '{$result}'.");
                 return line("Let's try again, {$name}!");
             }
+            line('Correct!');
+            $endGame += 1;
         }
         line("Congratulations, {$name}!");
     }
