@@ -10,13 +10,9 @@ function gameStart($game, $name)
         while ($endGame < 3) {
             $num = rand(1, 100);
             line("Question: {$num}");
-            if ($num % 2 == 0) {
-                $result = 'yes';
-            } else {
-                $result = 'no';
-            }
-            $answer = \cli\prompt('Your answer');
-            if (strtolower($answer) == $result) {
+            $result = $num % 2 == 0 ? 'yes' : 'no';
+            $answer = strtolower(\cli\prompt('Your answer'));
+            if ($answer == $result) {
                 line('Correct!');
                 $endGame += 1;
             } else {
