@@ -4,7 +4,8 @@
     "description": "project #1",
     "autoload": {
         "files": [
-            "src/cli.php"
+            "src/cli.php",
+            "src/games.php"
         ]
     },
     "authors": [
