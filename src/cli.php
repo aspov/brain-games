@@ -2,13 +2,47 @@
 namespace BrainGames\Cli;
 
 use function \cli\line;
-use function \BrainGames\Games\gameStart;
+
+function gcd($a, $b)
+{
+    $r = $a % $b;
+    return ($r != 0) ? gcd($b, $r) : $b;
+}
+
+function startGame($game)
+{
+    switch ($game) {
+        case 'brain-even':
+            return \BrainGames\Games\brainEven();
+        case 'brain-calc':
+            return \BrainGames\Games\brainCalc();
+        case 'brain-gcd':
+            return \BrainGames\Games\brainGcd();
+    }
+}
+
+function getDescription($game)
+{
+    [$description, ,] = startGame($game);
+    return $description;
+}
+
+function getQuestion($round)
+{
+    [,$question ,] = $round;
+    return $question;
+}
+
+function getResult($round)
+{
+    [, ,$result] = $round;
+    return $result;
+}
 
 function run($game = '')
 {
     line('Welcome to the Brain Game!');
-    [$description, , ] = gameStart($game);
-    line($description);
+    line(getDescription($game));
     line();
     $name = \cli\prompt('May I have your name?');
     line("Hello, %s!", $name);
@@ -19,7 +53,9 @@ function run($game = '')
     
     $rounds = 3;
     for ($i = 0; $i < $rounds; $i++) {
-        [ , $question, $result] = gameStart($game);
+        $round = startGame($game);
+        $question = getQuestion($round);
+        $result = getResult($round);
         line("Question: {$question}");
         $answer = strtolower(\cli\prompt('Your answer'));
         if ($answer != $result) {
