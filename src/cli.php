@@ -8,14 +8,16 @@ function getDescription($game)
 {
     switch ($game) {
         case 'brain-even':
-            line('Answer "yes" if number even otherwise answer "no".');
+            return 'Answer "yes" if number even otherwise answer "no".';
+        case 'brain-calc':
+            return 'What is the result of the expression?';
     }
 }
 
 function run($game = '')
 {
     line('Welcome to the Brain Game!');
-    getDescription($game);
+    line(getDescription($game));
     line();
     $name = \cli\prompt('May I have your name?');
     line("Hello, %s!", $name);
