@@ -4,20 +4,11 @@ namespace BrainGames\Cli;
 use function \cli\line;
 use function \BrainGames\Games\gameStart;
 
-function getDescription($game)
-{
-    switch ($game) {
-        case 'brain-even':
-            return 'Answer "yes" if number even otherwise answer "no".';
-        case 'brain-calc':
-            return 'What is the result of the expression?';
-    }
-}
-
 function run($game = '')
 {
     line('Welcome to the Brain Game!');
-    line(getDescription($game));
+    [$description, , ] = gameStart($game);
+    line($description);
     line();
     $name = \cli\prompt('May I have your name?');
     line("Hello, %s!", $name);
@@ -28,7 +19,7 @@ function run($game = '')
     
     $rounds = 3;
     for ($i = 0; $i < $rounds; $i++) {
-        [$question, $result] = gameStart($game);
+        [ , $question, $result] = gameStart($game);
         line("Question: {$question}");
         $answer = strtolower(\cli\prompt('Your answer'));
         if ($answer != $result) {
