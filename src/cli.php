@@ -18,6 +18,8 @@ function startGame($game)
             return \BrainGames\Games\brainCalc();
         case 'brain-gcd':
             return \BrainGames\Games\brainGcd();
+        case 'brain-progression':
+            return \BrainGames\Games\brainProgression();
     }
 }
 
@@ -29,13 +31,13 @@ function getDescription($game)
 
 function getQuestion($round)
 {
-    [,$question ,] = $round;
+    [, $question, ] = $round;
     return $question;
 }
 
 function getResult($round)
 {
-    [, ,$result] = $round;
+    [, , $result] = $round;
     return $result;
 }
 

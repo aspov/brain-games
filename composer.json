@@ -3,7 +3,8 @@
     "bin": ["bin/brain-games",
 	    "bin/brain-even",
 	    "bin/brain-calc",
-            "bin/brain-gcd"
+            "bin/brain-gcd",
+	    "brain-progression"
 	],
     "description": "project #1",
     "autoload": {
