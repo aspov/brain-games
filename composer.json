@@ -4,7 +4,7 @@
 	    "bin/brain-even",
 	    "bin/brain-calc",
             "bin/brain-gcd",
-	    "brain-progression"
+	    "bin/brain-progression"
 	],
     "description": "project #1",
     "autoload": {
