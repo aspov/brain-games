@@ -11,18 +11,12 @@ function gcd($a, $b)
 
 function startGame($game)
 {
-    switch ($game) {
-        case 'brain-even':
-            return \BrainGames\Games\brainEven();
-        case 'brain-calc':
-            return \BrainGames\Games\brainCalc();
-        case 'brain-gcd':
-            return \BrainGames\Games\brainGcd();
-        case 'brain-progression':
-            return \BrainGames\Games\brainProgression();
-        case 'brain-prime':
-            return \BrainGames\Games\brainPrime();
-    }
+    $game == 'brain-even' ? $startGame =  \BrainGames\Games\brainEven() : null;
+    $game == 'brain-calc' ? $startGame = \BrainGames\Games\brainCalc() : null;
+    $game == 'brain-gcd' ? $startGame = \BrainGames\Games\brainGcd() : null;
+    $game == 'brain-progression' ? $startGame = \BrainGames\Games\brainProgression() : null;
+    $game == 'brain-prime' ? $startGame =  \BrainGames\Games\brainPrime() : null;
+    return $startGame;
 }
 
 function getDescription($game)
