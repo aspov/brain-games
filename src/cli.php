@@ -20,6 +20,8 @@ function startGame($game)
             return \BrainGames\Games\brainGcd();
         case 'brain-progression':
             return \BrainGames\Games\brainProgression();
+        case 'brain-prime':
+            return \BrainGames\Games\brainPrime();
     }
 }
 
@@ -29,22 +31,19 @@ function getDescription($game)
     return $description;
 }
 
-function getQuestion($round)
+function newRound($game)
 {
-    [, $question, ] = $round;
-    return $question;
-}
-
-function getResult($round)
-{
-    [, , $result] = $round;
-    return $result;
+    [, $question, $result] = startGame($game);
+    return [$question, $result];
 }
 
 function run($game = '')
 {
     line('Welcome to the Brain Game!');
-    line(getDescription($game));
+    if (!empty($game)) {
+        line(getDescription($game));
+    }
+
     line();
     $name = \cli\prompt('May I have your name?');
     line("Hello, %s!", $name);
@@ -55,9 +54,8 @@ function run($game = '')
     
     $rounds = 3;
     for ($i = 0; $i < $rounds; $i++) {
-        $round = startGame($game);
-        $question = getQuestion($round);
-        $result = getResult($round);
+        $round = newRound($game);
+        [$question, $result] = $round;
         line("Question: {$question}");
         $answer = strtolower(\cli\prompt('Your answer'));
         if ($answer != $result) {
