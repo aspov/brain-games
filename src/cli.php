@@ -3,31 +3,25 @@ namespace BrainGames\Cli;
 
 use function \cli\line;
 
-function gcd($a, $b)
+function getGameResult($game)
 {
-    $r = $a % $b;
-    return ($r != 0) ? gcd($b, $r) : $b;
-}
-
-function startGame($game)
-{
-    $game == 'brain-even' ? $startGame =  \BrainGames\Games\brainEven() : null;
-    $game == 'brain-calc' ? $startGame = \BrainGames\Games\brainCalc() : null;
-    $game == 'brain-gcd' ? $startGame = \BrainGames\Games\brainGcd() : null;
-    $game == 'brain-progression' ? $startGame = \BrainGames\Games\brainProgression() : null;
-    $game == 'brain-prime' ? $startGame =  \BrainGames\Games\brainPrime() : null;
-    return $startGame;
+    $game == 'brain-even' ? $result =  \BrainGames\Games\BrainEven() : null;
+    $game == 'brain-calc' ? $result = \BrainGames\Games\BrainCalc() : null;
+    $game == 'brain-gcd' ? $result = \BrainGames\Games\BrainGcd() : null;
+    $game == 'brain-progression' ? $result = \BrainGames\Games\BrainProgression() : null;
+    $game == 'brain-prime' ? $result =  \BrainGames\Games\BrainPrime() : null;
+    return $result;
 }
 
 function getDescription($game)
 {
-    [$description, ,] = startGame($game);
+    [$description, ,] = getGameResult($game);
     return $description;
 }
 
-function newRound($game)
+function getNewRound($game)
 {
-    [, $question, $result] = startGame($game);
+    [, $question, $result] = getGameResult($game);
     return [$question, $result];
 }
 
@@ -48,7 +42,7 @@ function run($game = '')
     
     $rounds = 3;
     for ($i = 0; $i < $rounds; $i++) {
-        $round = newRound($game);
+        $round = getNewRound($game);
         [$question, $result] = $round;
         line("Question: {$question}");
         $answer = strtolower(\cli\prompt('Your answer'));
