@@ -1,18 +1,21 @@
 <?php
 namespace BrainGames\Games;
 
-function gcd($a, $b)
+define("GAME_RULE", 'Find the greatest common divisor of given numbers.');
+define("MIN_VALUE", 1);
+define("MAX_VALUE", 20);
+
+function getGcd($a, $b)
 {
     $r = $a % $b;
-    return ($r != 0) ? gcd($b, $r) : $b;
+    return ($r != 0) ? getGcd($b, $r) : $b;
 }
 
-function BrainGcd()
+function play()
 {
-    $description = 'Find the greatest common divisor of given numbers.';
-    $num1 = rand(1, 20);
-    $num2 = rand(1, 20);
-    $value = "{$num1} {$num2}";
-    $result = gcd($num1, $num2);
-    return [$description, $value, $result];
+    $num1 = rand(MIN_VALUE, MAX_VALUE);
+    $num2 = rand(MIN_VALUE, MAX_VALUE);
+    $question = "{$num1} {$num2}";
+    $result = getGcd($num1, $num2);
+    return [$question, $result];
 }

@@ -9,16 +9,11 @@
     "bin/brain-prime"
   ],
   "description": "project #1",
-  "type": "library",
+  "type": "project",
   "keywords": ["hexlet", "brain", "games"],
   "autoload": {
     "files": [
-      "src/cli.php",
-      "games/BrainEven.php",
-      "games/BrainCalc.php",
-      "games/BrainGcd.php",
-      "games/BrainProgression.php",
-      "games/BrainPrime.php"
+      "src/cli.php"      
       ]
     },
   "authors": [

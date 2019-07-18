@@ -1,10 +1,18 @@
 <?php
 namespace BrainGames\Games;
 
-function BrainEven()
+define("GAME_RULE", 'Answer "yes" if number even otherwise answer "no".');
+define("MIN_VALUE", 1);
+define("MAX_VALUE", 100);
+
+function isEven($number)
 {
-    $description = 'Answer "yes" if number even otherwise answer "no".';
-    $value = rand(1, 100);
-    $result = $value % 2 == 0 ? 'yes' : 'no';
-    return [$description, $value, $result];
+    return $number % 2 == 0 ? true : false;
+}
+
+function play()
+{
+    $question = rand(MIN_VALUE, MAX_VALUE);
+    $result = isEven($question) ? 'yes' : 'no';
+    return [$question, $result];
 }

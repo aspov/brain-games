@@ -1,18 +1,24 @@
 <?php
 namespace BrainGames\Games;
 
-function BrainProgression()
+define("GAME_RULE", 'What number is missing in the progression?');
+define("POSITION_LIMIT", 100);
+define("MIN_VALUE", 1);
+define("MAX_VALUE", 5);
+
+function play()
 {
-    $description = 'What number is missing in the progression?';
-    $startNum = rand(1, 100);
-    $step = rand(1, 5);
-    $hiddenNum = rand(0, 9);
-    $progressionCount = 10;
-    for ($i = 0; $i < $progressionCount; $i++) {
-        $value[] = $startNum;
-        $startNum = $startNum + $step;
+    $position = rand(1, POSITION_LIMIT);
+    $step = rand(MIN_VALUE, MAX_VALUE);
+    $progressionRange = 10;
+    $hiddenPosition = rand(0, $progressionRange - 1);
+    
+    for ($i = 0; $i < $progressionRange; $i++) {
+        $values[] = $position;
+        $position += $step;
     }
-    $result = $value[$hiddenNum];
-    $value[$hiddenNum] = '..';
-    return [$description, implode($value, ' '), $result];
+    $result = $values[$hiddenPosition];
+    $values[$hiddenPosition] = '..';
+    $question = implode($values, ' ');
+    return [$question, $result];
 }

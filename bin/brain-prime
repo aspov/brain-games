@@ -12,4 +12,6 @@ if (file_exists($autoloadPath1)) {
 
 use function BrainGames\Cli\run;
 
-echo run('brain-prime');
+define("GAME_PATH" , __DIR__ . '/../games/BrainPrime.php');
+require_once GAME_PATH;
+echo run();

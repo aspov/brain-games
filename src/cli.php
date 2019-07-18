@@ -3,46 +3,24 @@ namespace BrainGames\Cli;
 
 use function \cli\line;
 
-function getGameResult($game)
-{
-    $game == 'brain-even' ? $result =  \BrainGames\Games\BrainEven() : null;
-    $game == 'brain-calc' ? $result = \BrainGames\Games\BrainCalc() : null;
-    $game == 'brain-gcd' ? $result = \BrainGames\Games\BrainGcd() : null;
-    $game == 'brain-progression' ? $result = \BrainGames\Games\BrainProgression() : null;
-    $game == 'brain-prime' ? $result =  \BrainGames\Games\BrainPrime() : null;
-    return $result;
-}
-
-function getDescription($game)
-{
-    [$description, ,] = getGameResult($game);
-    return $description;
-}
-
-function getNewRound($game)
-{
-    [, $question, $result] = getGameResult($game);
-    return [$question, $result];
-}
-
-function run($game = '')
+function run()
 {
     line('Welcome to the Brain Game!');
-    if (!empty($game)) {
-        line(getDescription($game));
+    if (defined('GAME_RULE')) {
+        line(GAME_RULE);
     }
 
     line();
     $name = \cli\prompt('May I have your name?');
     line("Hello, %s!", $name);
     
-    if (empty($game)) {
+    if (!defined('GAME_PATH')) {
         return null;
     }
     
-    $rounds = 3;
-    for ($i = 0; $i < $rounds; $i++) {
-        $round = getNewRound($game);
+    $roundsCount = 3;
+    for ($i = 0; $i < $roundsCount; $i++) {
+        $round = \BrainGames\Games\play();
         [$question, $result] = $round;
         line("Question: {$question}");
         $answer = strtolower(\cli\prompt('Your answer'));
