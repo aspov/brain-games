@@ -2,16 +2,17 @@
 namespace BrainGames\Cli;
 
 use function \cli\line;
+use function \cli\prompt;
 
 function run()
 {
     line('Welcome to the Brain Game!');
-    if (defined('GAME_RULE')) {
-        line(GAME_RULE);
+    if (defined('DESCRIPTION')) {
+        line(DESCRIPTION);
     }
 
     line();
-    $name = \cli\prompt('May I have your name?');
+    $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     
     if (!defined('GAME_PATH')) {
@@ -23,10 +24,11 @@ function run()
         $round = \BrainGames\Games\play();
         [$question, $result] = $round;
         line("Question: {$question}");
-        $answer = strtolower(\cli\prompt('Your answer'));
+        $answer = prompt('Your answer');
         if ($answer != $result) {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$result}'.");
-            return line("Let's try again, {$name}!");
+            line("Let's try again, {$name}!");
+            return null;
         }
         line('Correct!');
     }

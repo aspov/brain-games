@@ -1,26 +1,26 @@
 <?php
-namespace BrainGames\Games;
+namespace BrainGames\Games\Calc;
 
-define("GAME_RULE", 'What is the result of the expression?');
-define("OPERATION_COUNT", 3);
+define("DESCRIPTION", 'What is the result of the expression?');
+define("OPERATORS", ["+", "-", "*"]);
 define("MIN_VALUE", 1);
 define("MAX_VALUE", 10);
 
 function play()
 {
-    $operation = rand(1, OPERATION_COUNT);
+    $operation = OPERATORS[rand(0, count(OPERATORS))];
     $num1 = rand(MIN_VALUE, MAX_VALUE);
     $num2 = rand(MIN_VALUE, MAX_VALUE);
     switch ($operation) {
-        case 1:
+        case "+":
             $question = "{$num1} + {$num2}";
             $result = $num1 + $num2;
             break;
-        case 2:
+        case "-":
             $question = "{$num1} - {$num2}";
             $result = $num1 - $num2;
             break;
-        case 3:
+        case "*":
             $question = "{$num1} * {$num2}";
             $result = $num1 * $num2;
             break;

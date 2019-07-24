@@ -1,7 +1,7 @@
 <?php
-namespace BrainGames\Games;
+namespace BrainGames\Games\Even;
 
-define("GAME_RULE", 'Answer "yes" if number even otherwise answer "no".');
+define("DESCRIPTION", 'Answer "yes" if number even otherwise answer "no".');
 define("MIN_VALUE", 1);
 define("MAX_VALUE", 100);
 

@@ -13,7 +13,12 @@
   "keywords": ["hexlet", "brain", "games"],
   "autoload": {
     "files": [
-      "src/cli.php"      
+      "src/cli.php",
+      "src/games/calc.php",
+      "src/games/even.php",
+      "src/games/gcd.php",
+      "src/games/prime.php",
+      "src/games/progression.php"              
       ]
     },
   "authors": [
