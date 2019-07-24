@@ -1,9 +1,15 @@
 <?php
 namespace BrainGames\Games\Even;
 
-define("DESCRIPTION", 'Answer "yes" if number even otherwise answer "no".');
-define("MIN_VALUE", 1);
-define("MAX_VALUE", 100);
+use function BrainGames\Cli\run;
+const DESCRIPTION = 'Answer "yes" if number even otherwise answer "no".';
+const MIN_VALUE = 1;
+const MAX_VALUE = 100;
+
+function startGame()
+{
+    run(DESCRIPTION, __NAMESPACE__);
+}
 
 function isEven($number)
 {

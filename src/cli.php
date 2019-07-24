@@ -3,26 +3,26 @@ namespace BrainGames\Cli;
 
 use function \cli\line;
 use function \cli\prompt;
+const ROUNDS_COUNT = 3;
 
-function run()
+function run($description = "", $gameNamespace = "")
 {
     line('Welcome to the Brain Game!');
-    if (defined('DESCRIPTION')) {
-        line(DESCRIPTION);
+    if (!empty($description)) {
+        line($description);
     }
 
     line();
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     
-    if (!defined('GAME_PATH')) {
+    if (empty($gameNamespace)) {
         return null;
     }
     
-    $roundsCount = 3;
-    for ($i = 0; $i < $roundsCount; $i++) {
-        $round = \BrainGames\Games\play();
-        [$question, $result] = $round;
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
+        $playFunction = $gameNamespace . "\play";
+        [$question, $result] = $playFunction();
         line("Question: {$question}");
         $answer = prompt('Your answer');
         if ($answer != $result) {

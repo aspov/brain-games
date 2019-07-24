@@ -1,11 +1,17 @@
 <?php
 namespace BrainGames\Games\Progression;
 
-define("DESCRIPTION", 'What number is missing in the progression?');
-define("POSITION_LIMIT", 100);
-define("LENGTH", 10);
-define("MIN_VALUE", 1);
-define("MAX_VALUE", 5);
+use function BrainGames\Cli\run;
+const DESCRIPTION = 'What number is missing in the progression?';
+const POSITION_LIMIT = 100;
+const LENGTH = 10;
+const MIN_VALUE = 1;
+const MAX_VALUE = 5;
+
+function startGame()
+{
+    run(DESCRIPTION, __NAMESPACE__);
+}
 
 function play()
 {
