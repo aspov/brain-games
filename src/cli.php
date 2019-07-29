@@ -1,34 +1,25 @@
 <?php
-namespace BrainGames\Cli;
+namespace BrainGames\cli;
 
 use function \cli\line;
 use function \cli\prompt;
 const ROUNDS_COUNT = 3;
 
-function run($description = "", $gameNamespace = "")
+function run($description, $getGameData)
 {
     line('Welcome to the Brain Game!');
-    if (!empty($description)) {
-        line($description);
-    }
-
+    line($description);
     line();
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
-    
-    if (empty($gameNamespace)) {
-        return null;
-    }
-    
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $playFunction = $gameNamespace . "\play";
-        [$question, $result] = $playFunction();
+        [$question, $correctAnswer] = $getGameData();
         line("Question: {$question}");
         $answer = prompt('Your answer');
-        if ($answer != $result) {
-            line("'{$answer}' is wrong answer ;(. Correct answer was '{$result}'.");
+        if ($answer != $correctAnswer) {
+            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
             line("Let's try again, {$name}!");
-            return null;
+            exit;
         }
         line('Correct!');
     }

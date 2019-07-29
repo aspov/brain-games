@@ -1,5 +1,5 @@
 <?php
-namespace BrainGames\Games\Progression;
+namespace BrainGames\games\progression;
 
 use function BrainGames\Cli\run;
 const DESCRIPTION = 'What number is missing in the progression?';
@@ -10,20 +10,23 @@ const MAX_VALUE = 5;
 
 function startGame()
 {
-    run(DESCRIPTION, __NAMESPACE__);
+    $getGameData = function () {
+        return getGameData();
+    };
+    run(DESCRIPTION, $getGameData);
 }
 
-function play()
+function getGameData()
 {
     $position = rand(1, POSITION_LIMIT);
     $step = rand(MIN_VALUE, MAX_VALUE);
-    $hiddenValue = rand(0, LENGTH - 1);
+    $indexOfHiddenValue = rand(0, LENGTH - 1);
     
     for ($i = 0; $i < LENGTH; $i++) {
         $progression[] = $position + $step * $i;
     }
-    $result = $progression[$hiddenValue];
-    $progression[$hiddenValue] = '..';
+    $correctAnswer = $progression[$indexOfHiddenValue];
+    $progression[$indexOfHiddenValue] = '..';
     $question = implode($progression, ' ');
-    return [$question, $result];
+    return [$question, $correctAnswer];
 }

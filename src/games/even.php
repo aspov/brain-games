@@ -1,5 +1,5 @@
 <?php
-namespace BrainGames\Games\Even;
+namespace BrainGames\games\even;
 
 use function BrainGames\Cli\run;
 const DESCRIPTION = 'Answer "yes" if number even otherwise answer "no".';
@@ -8,7 +8,10 @@ const MAX_VALUE = 100;
 
 function startGame()
 {
-    run(DESCRIPTION, __NAMESPACE__);
+    $getGameData = function () {
+        return getGameData();
+    };
+    run(DESCRIPTION, $getGameData);
 }
 
 function isEven($number)
@@ -16,9 +19,9 @@ function isEven($number)
     return $number % 2 == 0 ? true : false;
 }
 
-function play()
+function getGameData()
 {
     $question = rand(MIN_VALUE, MAX_VALUE);
-    $result = isEven($question) ? 'yes' : 'no';
-    return [$question, $result];
+    $correctAnswer = isEven($question) ? 'yes' : 'no';
+    return [$question, $correctAnswer];
 }
