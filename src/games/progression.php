@@ -1,7 +1,7 @@
 <?php
 namespace BrainGames\games\progression;
 
-use function BrainGames\Cli\run;
+use function BrainGames\cli\run;
 const DESCRIPTION = 'What number is missing in the progression?';
 const POSITION_LIMIT = 100;
 const LENGTH = 10;

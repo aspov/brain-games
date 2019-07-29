@@ -1,7 +1,7 @@
 <?php
 namespace BrainGames\games\prime;
 
-use function BrainGames\Cli\run;
+use function BrainGames\cli\run;
 const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const MIN_VALUE = 1;
 const MAX_VALUE = 100;

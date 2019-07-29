@@ -1,7 +1,7 @@
 <?php
 namespace BrainGames\games\even;
 
-use function BrainGames\Cli\run;
+use function BrainGames\cli\run;
 const DESCRIPTION = 'Answer "yes" if number even otherwise answer "no".';
 const MIN_VALUE = 1;
 const MAX_VALUE = 100;
