@@ -1,5 +1,5 @@
 <?php
-namespace BrainGames\cli;
+namespace BrainGames\engine;
 
 use function \cli\line;
 use function \cli\prompt;
@@ -12,8 +12,8 @@ function run($description, $getGameData)
     line();
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
-    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        [$question, $correctAnswer] = $getGameData();
+    for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
+        [$question, $correctAnswer] = $getGameData($i);
         line("Question: {$question}");
         $answer = prompt('Your answer');
         if ($answer != $correctAnswer) {

@@ -1,22 +1,21 @@
 <?php
 namespace BrainGames\games\сalc;
 
-use function BrainGames\cli\run;
+use function BrainGames\engine\run;
 const DESCRIPTION = 'What is the result of the expression?';
 const OPERATORS = ["+", "-", "*"];
 const MIN_VALUE = 1;
 const MAX_VALUE = 10;
 
-function startGame()
+function startGame($round = false)
 {
-    $getGameData = function () {
-        return getGameData();
-    };
-    run(DESCRIPTION, $getGameData);
-}
+    if (!$round) {
+        $getGameData = function ($round) {
+            return startGame($round);
+        };
+        return run(DESCRIPTION, $getGameData);
+    }
 
-function getGameData()
-{
     $operation = OPERATORS[rand(0, count(OPERATORS) - 1)];
     $num1 = rand(MIN_VALUE, MAX_VALUE);
     $num2 = rand(MIN_VALUE, MAX_VALUE);

@@ -1,18 +1,10 @@
 <?php
 namespace BrainGames\games\prime;
 
-use function BrainGames\cli\run;
+use function BrainGames\engine\run;
 const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const MIN_VALUE = 1;
 const MAX_VALUE = 100;
-
-function startGame()
-{
-    $getGameData = function () {
-        return getGameData();
-    };
-    run(DESCRIPTION, $getGameData);
-}
 
 function isPrime($number)
 {
@@ -24,8 +16,15 @@ function isPrime($number)
     }
 }
 
-function getGameData()
+function startGame($round = false)
 {
+    if (!$round) {
+        $getGameData = function ($round) {
+            return startGame($round);
+        };
+        return run(DESCRIPTION, $getGameData);
+    }
+
     $question = rand(MIN_VALUE, MAX_VALUE);
     $correctAnswer = isPrime($question) ? 'yes' : 'no';
     return [$question, $correctAnswer];
