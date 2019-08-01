@@ -14,10 +14,11 @@ function getGcd($a, $b)
 
 function startGame($round = false)
 {
+    $getGameData = function ($round) {
+        return startGame($round);
+    };
+    
     if (!$round) {
-        $getGameData = function ($round) {
-            return startGame($round);
-        };
         return run(DESCRIPTION, $getGameData);
     }
 
