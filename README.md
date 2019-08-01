@@ -1,11 +1,21 @@
-# php-project-lvl1
+# Brain-games
 
 <a href="https://codeclimate.com/github/aspov/php-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/355b3ce8cdf6ae9f2646/maintainability" /></a>
 [![Build Status](https://travis-ci.org/aspov/php-project-lvl1.svg?branch=master)](https://travis-ci.org/aspov/php-project-lvl1)
 
-Brain-games:
+This package contains five games:
 
-[![asciicast](https://asciinema.org/a/256151.svg)](https://asciinema.org/a/256151)
+1. Brain-even
+2. Brain-calc
+3. Brain-gcd
+4. Brain-progression
+5. Brain-prime
+
+## Install
+```
+$ composer global require aspov/brain-games
+```
+## Usage
 
 Brain-even:
 
