@@ -9,12 +9,11 @@ const MAX_VALUE = 10;
 
 function startGame($round = false)
 {
-    $getGameData = function ($round) {
-        return startGame($round);
-    };
-    
     if (!$round) {
-        return run(DESCRIPTION, $getGameData);
+        $getGameData = function ($round) {
+            return startGame($round);
+        };
+        run(DESCRIPTION, $getGameData);
     }
 
     $operation = OPERATORS[rand(0, count(OPERATORS) - 1)];

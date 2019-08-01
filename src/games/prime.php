@@ -18,12 +18,11 @@ function isPrime($number)
 
 function startGame($round = false)
 {
-    $getGameData = function ($round) {
-        return startGame($round);
-    };
-    
     if (!$round) {
-        return run(DESCRIPTION, $getGameData);
+        $getGameData = function ($round) {
+            return startGame($round);
+        };
+        run(DESCRIPTION, $getGameData);
     }
 
     $question = rand(MIN_VALUE, MAX_VALUE);

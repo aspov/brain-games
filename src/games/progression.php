@@ -10,12 +10,11 @@ const MAX_VALUE = 5;
 
 function startGame($round = false)
 {
-    $getGameData = function ($round) {
-        return startGame($round);
-    };
-    
     if (!$round) {
-        return run(DESCRIPTION, $getGameData);
+        $getGameData = function ($round) {
+            return startGame($round);
+        };
+        run(DESCRIPTION, $getGameData);
     }
 
     $position = rand(1, POSITION_LIMIT);

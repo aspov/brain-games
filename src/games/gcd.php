@@ -14,12 +14,11 @@ function getGcd($a, $b)
 
 function startGame($round = false)
 {
-    $getGameData = function ($round) {
-        return startGame($round);
-    };
-    
     if (!$round) {
-        return run(DESCRIPTION, $getGameData);
+        $getGameData = function ($round) {
+            return startGame($round);
+        };
+        run(DESCRIPTION, $getGameData);
     }
 
     $num1 = rand(MIN_VALUE, MAX_VALUE);
