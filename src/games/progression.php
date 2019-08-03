@@ -8,24 +8,21 @@ const LENGTH = 10;
 const MIN_VALUE = 1;
 const MAX_VALUE = 5;
 
-function startGame($round = false)
+function startGame()
 {
-    if (!$round) {
-        $getGameData = function ($round) {
-            return startGame($round);
-        };
-        run(DESCRIPTION, $getGameData);
-    }
-
-    $position = rand(1, POSITION_LIMIT);
-    $step = rand(MIN_VALUE, MAX_VALUE);
-    $indexOfHiddenValue = rand(0, LENGTH - 1);
+    $getGameData = function () {
+        $position = rand(1, POSITION_LIMIT);
+        $step = rand(MIN_VALUE, MAX_VALUE);
+        $indexOfHiddenValue = rand(0, LENGTH - 1);
     
-    for ($i = 0; $i < LENGTH; $i++) {
-        $progression[] = $position + $step * $i;
-    }
-    $correctAnswer = $progression[$indexOfHiddenValue];
-    $progression[$indexOfHiddenValue] = '..';
-    $question = implode($progression, ' ');
-    return [$question, $correctAnswer];
+        for ($i = 0; $i < LENGTH; $i++) {
+            $progression[] = $position + $step * $i;
+        }
+        
+        $correctAnswer = $progression[$indexOfHiddenValue];
+        $progression[$indexOfHiddenValue] = '..';
+        $question = implode($progression, ' ');
+        return [$question, $correctAnswer];
+    };
+    run(DESCRIPTION, $getGameData);
 }

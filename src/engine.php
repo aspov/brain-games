@@ -13,7 +13,7 @@ function run($description, $getGameData)
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
-        [$question, $correctAnswer] = $getGameData($i);
+        [$question, $correctAnswer] = $getGameData();
         line("Question: {$question}");
         $answer = prompt('Your answer');
         if ($answer != $correctAnswer) {

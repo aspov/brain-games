@@ -12,16 +12,12 @@ function isEven($number)
     return $number % 2 == 0 ? true : false;
 }
 
-function startGame($round = false)
+function startGame()
 {
-    if (!$round) {
-        $getGameData = function ($round) {
-            return startGame($round);
-        };
-        run(DESCRIPTION, $getGameData);
-    }
-
-    $question = rand(MIN_VALUE, MAX_VALUE);
-    $correctAnswer = isEven($question) ? 'yes' : 'no';
-    return [$question, $correctAnswer];
+    $getGameData = function () {
+        $question = rand(MIN_VALUE, MAX_VALUE);
+        $correctAnswer = isEven($question) ? 'yes' : 'no';
+        return [$question, $correctAnswer];
+    };
+    run(DESCRIPTION, $getGameData);
 }

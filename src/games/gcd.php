@@ -12,18 +12,14 @@ function getGcd($a, $b)
     return ($r != 0) ? getGcd($b, $r) : $b;
 }
 
-function startGame($round = false)
+function startGame()
 {
-    if (!$round) {
-        $getGameData = function ($round) {
-            return startGame($round);
-        };
-        run(DESCRIPTION, $getGameData);
-    }
-
-    $num1 = rand(MIN_VALUE, MAX_VALUE);
-    $num2 = rand(MIN_VALUE, MAX_VALUE);
-    $question = "$num1 $num2";
-    $correctAnswer = getGcd($num1, $num2);
-    return [$question, $correctAnswer];
+    $getGameData = function () {
+        $num1 = rand(MIN_VALUE, MAX_VALUE);
+        $num2 = rand(MIN_VALUE, MAX_VALUE);
+        $question = "$num1 $num2";
+        $correctAnswer = getGcd($num1, $num2);
+        return [$question, $correctAnswer];
+    };
+    run(DESCRIPTION, $getGameData);
 }

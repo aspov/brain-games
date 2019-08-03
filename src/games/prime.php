@@ -16,16 +16,12 @@ function isPrime($number)
     }
 }
 
-function startGame($round = false)
+function startGame()
 {
-    if (!$round) {
-        $getGameData = function ($round) {
-            return startGame($round);
-        };
-        run(DESCRIPTION, $getGameData);
-    }
-
-    $question = rand(MIN_VALUE, MAX_VALUE);
-    $correctAnswer = isPrime($question) ? 'yes' : 'no';
-    return [$question, $correctAnswer];
+    $getGameData = function () {
+        $question = rand(MIN_VALUE, MAX_VALUE);
+        $correctAnswer = isPrime($question) ? 'yes' : 'no';
+        return [$question, $correctAnswer];
+    };
+    run(DESCRIPTION, $getGameData);
 }
