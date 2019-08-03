@@ -11,11 +11,15 @@ This package contains five games:
 4. Brain-progression
 5. Brain-prime
 
-## Install
+You need to give the correct answer to the game question. Each game includes 3 rounds
+
+## Installation
 ```
 $ composer global require aspov/brain-games
 ```
 ## Usage
+
+To start the game, run the game file <br>
 
 Brain-even:
 
